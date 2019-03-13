@@ -11,3 +11,9 @@ Generate html, pdf, etc.
 Create index
 
 `make build-index`
+
+## Spread the knowledage
+
+[presentation][presentation]
+
+[presentation]: https://woile.github.io/gopass-presentation/

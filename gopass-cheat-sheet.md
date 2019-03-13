@@ -148,8 +148,9 @@ gopass recipients add willy@email.com
 ```
 
 <div class="source">
-[source][source]
+[source][source] | [presentation][presentation]
 </div>
 
 [gopass]: https://gopass.pw
 [source]: https://github.com/Woile/gopass-cheat-sheet
+[presentation]: https://woile.github.io/gopass-presentation/
