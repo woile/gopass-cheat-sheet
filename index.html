@@ -130,7 +130,7 @@
     <div class="container-fluid">
       <div class="cheat-sheet">
         <h1 id="gopass-cheat-sheet">GOPASS CHEAT SHEET</h1>
-        <p>Keep passwords safe with <a href="https://gopass.pw">gopass</a>. It creates a folder tree, where encrypted files are the leaves.</p>
+        <p>Secure passwords with <a href="https://gopass.pw">gopass</a>. It creates a folder tree, where encrypted files are the leaves.</p>
         <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">gopass</span></a>
         <a class="sourceLine" id="cb1-2" title="2">├── <span class="ex">my-company</span></a>
         <a class="sourceLine" id="cb1-3" title="3">│   └── <span class="ex">pepe@my-company.com</span></a>
@@ -139,28 +139,28 @@
         <h2 id="gpg-keys">GPG Keys</h2>
         <h3 id="list-secret-keys">List secret keys</h3>
         <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">gpg</span> -k</a></code></pre></div>
-        <h3 id="create-new-key">Create new key</h3>
+        <h3 id="create-new-key-required">Create new key (required)</h3>
         <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">gpg</span> --full-generate-key</a></code></pre></div>
         <h2 id="initialize-gopass">Initialize gopass</h2>
         <h3 id="autocomplete">Autocomplete</h3>
         <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">echo</span> <span class="st">&quot;source &lt;(gopass completion bash)&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</a></code></pre></div>
-        <h3 id="initialize-gopass-1">Initialize gopass</h3>
+        <h3 id="initialize-new-password-store-required">Initialize new password store (required)</h3>
         <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">gopass</span> init</a></code></pre></div>
         <p>Note: backup your private key in an encrypted disk.</p>
         <h2 id="using-gopass">Using gopass</h2>
         <h3 id="list-passwords">List passwords</h3>
         <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">gopass</span> ls</a></code></pre></div>
         <h3 id="creating-passwords">Creating passwords</h3>
-        <!-- Default store location `~/.password-store/` -->
+        <p>Default store location <code>~/.password-store/</code></p>
         <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">gopass</span> insert my-company/willy@email.com</a></code></pre></div>
         <h3 id="generate-random-pass">Generate random pass</h3>
         <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">gopass</span> generate my-company/anothername@rmail.com</a></code></pre></div>
-        <h3 id="show-password-in-console">Show password in console</h3>
-        <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">gopass</span> my-company/willy@email.com</a></code></pre></div>
-        <h3 id="copy-password-to-clipboard">Copy password to clipboard</h3>
-        <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">gopass</span> -c my-company/willy@email.com</a></code></pre></div>
         <h3 id="search-secrets">Search secrets</h3>
-        <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">gopass</span> search @email.com</a></code></pre></div>
+        <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">gopass</span> search @email.com</a></code></pre></div>
+        <h3 id="show-password-in-console">Show password in console</h3>
+        <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">gopass</span> my-company/willy@email.com</a></code></pre></div>
+        <h3 id="copy-password-to-clipboard">Copy password to clipboard</h3>
+        <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">gopass</span> -c my-company/willy@email.com</a></code></pre></div>
         <h2 id="using-stores">Using stores</h2>
         <p>Stores (AKA mounts) let you group your passwords. Example: <code>personal</code>, <code>company</code>. Each one can live in a different repository, and you could share <code>company</code> with your peers.</p>
         <h3 id="initialize-new-store">Initialize new store</h3>

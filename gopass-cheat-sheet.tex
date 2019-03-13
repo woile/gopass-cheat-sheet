@@ -128,7 +128,7 @@
 \hypertarget{gopass-cheat-sheet}{%
 \section{GOPASS CHEAT SHEET}\label{gopass-cheat-sheet}}
 
-Keep passwords safe with \href{https://gopass.pw}{gopass}. It creates a
+Secure passwords with \href{https://gopass.pw}{gopass}. It creates a
 folder tree, where encrypted files are the leaves.
 
 \begin{Shaded}
@@ -153,8 +153,9 @@ folder tree, where encrypted files are the leaves.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{create-new-key}{%
-\subsubsection{Create new key}\label{create-new-key}}
+\hypertarget{create-new-key-required}{%
+\subsubsection{Create new key
+(required)}\label{create-new-key-required}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -174,8 +175,9 @@ folder tree, where encrypted files are the leaves.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{initialize-gopass-1}{%
-\subsubsection{Initialize gopass}\label{initialize-gopass-1}}
+\hypertarget{initialize-new-password-store-required}{%
+\subsubsection{Initialize new password store
+(required)}\label{initialize-new-password-store-required}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -200,6 +202,8 @@ Note: backup your private key in an encrypted disk.
 \hypertarget{creating-passwords}{%
 \subsubsection{Creating passwords}\label{creating-passwords}}
 
+Default store location \texttt{\textasciitilde{}/.password-store/}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \ExtensionTok{gopass}\NormalTok{ insert my-company/willy@email.com}
@@ -212,6 +216,15 @@ Note: backup your private key in an encrypted disk.
 \begin{Shaded}
 \begin{Highlighting}[]
 \ExtensionTok{gopass}\NormalTok{ generate my-company/anothername@rmail.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{search-secrets}{%
+\subsubsection{Search secrets}\label{search-secrets}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ search @email.com}
 \end{Highlighting}
 \end{Shaded}
 
@@ -232,15 +245,6 @@ clipboard}\label{copy-password-to-clipboard}}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ExtensionTok{gopass}\NormalTok{ -c my-company/willy@email.com}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{search-secrets}{%
-\subsubsection{Search secrets}\label{search-secrets}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{gopass}\NormalTok{ search @email.com}
 \end{Highlighting}
 \end{Shaded}
 

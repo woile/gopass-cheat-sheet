@@ -1,6 +1,6 @@
 # GOPASS CHEAT SHEET
 
-Keep passwords safe with [gopass][gopass]. It creates a folder tree, where encrypted files are the leaves.
+Secure passwords with [gopass][gopass]. It creates a folder tree, where encrypted files are the leaves.
 
 ```bash
 gopass
@@ -18,7 +18,7 @@ gopass
 gpg -k
 ```
 
-### Create new key
+### Create new key (required)
 
 ```bash
 gpg --full-generate-key
@@ -32,7 +32,7 @@ gpg --full-generate-key
 echo "source <(gopass completion bash)" >> ~/.bashrc
 ```
 
-### Initialize gopass
+### Initialize new password store (required)
 
 ```bash
 gopass init
@@ -50,7 +50,7 @@ gopass ls
 
 ### Creating passwords
 
-<!-- Default store location `~/.password-store/` -->
+Default store location `~/.password-store/`
 
 ```bash
 gopass insert my-company/willy@email.com
@@ -60,6 +60,12 @@ gopass insert my-company/willy@email.com
 
 ```bash
 gopass generate my-company/anothername@rmail.com
+```
+
+### Search secrets
+
+```bash
+gopass search @email.com
 ```
 
 ### Show password in console
@@ -72,12 +78,6 @@ gopass my-company/willy@email.com
 
 ```bash
 gopass -c my-company/willy@email.com
-```
-
-### Search secrets
-
-```bash
-gopass search @email.com
 ```
 
 ## Using stores
