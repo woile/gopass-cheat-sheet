@@ -1,0 +1,354 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[9pt,english,a4paper,]{scrartcl}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Gopass Cheat Sheet},
+            pdfauthor={Santiago Fraire Willemoes},
+            pdfkeywords={gpg, crypto, password, secrets},
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=Blue,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[a4paper,left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\pagestyle{empty}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=english]{babel}
+\else
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\fi
+
+\title{Gopass Cheat Sheet}
+\author{Santiago Fraire Willemoes}
+\date{}
+
+\usepackage{multicol}
+
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{{\color{blue}{\oldtexttt{#1}}}}
+
+
+
+\begin{document}
+
+\raggedright
+
+\footnotesize
+
+\begin{multicols}{3}
+\hypertarget{gopass-cheat-sheet}{%
+\section{GOPASS CHEAT SHEET}\label{gopass-cheat-sheet}}
+
+Keep passwords safe with \href{https://gopass.pw}{gopass}. It creates a
+folder tree, where encrypted files are the leaves.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}
+\NormalTok{├── }\ExtensionTok{my-company}
+\NormalTok{│   └── }\ExtensionTok{pepe@my-company.com}
+\NormalTok{└── }\ExtensionTok{personal}
+\NormalTok{    └── }\ExtensionTok{pepe@personal.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{gpg-keys}{%
+\subsection{GPG Keys}\label{gpg-keys}}
+
+\hypertarget{list-secret-keys}{%
+\subsubsection{List secret keys}\label{list-secret-keys}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gpg}\NormalTok{ -k}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{create-new-key}{%
+\subsubsection{Create new key}\label{create-new-key}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gpg}\NormalTok{ --full-generate-key}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{initialize-gopass}{%
+\subsection{Initialize gopass}\label{initialize-gopass}}
+
+\hypertarget{autocomplete}{%
+\subsubsection{Autocomplete}\label{autocomplete}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{"source <(gopass completion bash)"} \OperatorTok{>>}\NormalTok{ ~/.bashrc}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{initialize-gopass-1}{%
+\subsubsection{Initialize gopass}\label{initialize-gopass-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ init}
+\end{Highlighting}
+\end{Shaded}
+
+Note: backup your private key in an encrypted disk.
+
+\hypertarget{using-gopass}{%
+\subsection{Using gopass}\label{using-gopass}}
+
+\hypertarget{list-passwords}{%
+\subsubsection{List passwords}\label{list-passwords}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ ls}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-passwords}{%
+\subsubsection{Creating passwords}\label{creating-passwords}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ insert my-company/willy@email.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{generate-random-pass}{%
+\subsubsection{Generate random pass}\label{generate-random-pass}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ generate my-company/anothername@rmail.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{show-password-in-console}{%
+\subsubsection{Show password in
+console}\label{show-password-in-console}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ my-company/willy@email.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{copy-password-to-clipboard}{%
+\subsubsection{Copy password to
+clipboard}\label{copy-password-to-clipboard}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ -c my-company/willy@email.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{search-secrets}{%
+\subsubsection{Search secrets}\label{search-secrets}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ search @email.com}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{using-stores}{%
+\subsection{Using stores}\label{using-stores}}
+
+Stores (AKA mounts) let you group your passwords. Example:
+\texttt{personal}, \texttt{company}. Each one can live in a different
+repository, and you could share \texttt{company} with your peers.
+
+\hypertarget{initialize-new-store}{%
+\subsubsection{Initialize new store}\label{initialize-new-store}}
+
+Creates a new store located at
+\texttt{\textasciitilde{}/.password-store-my-company}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ init --store my-company}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{add-git-remote-to-store}{%
+\subsubsection{Add git remote to store}\label{add-git-remote-to-store}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ git remote add --store my-company origin git@gh.com/Woile/keys.git}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{clone-existing-store}{%
+\subsubsection{Clone existing store}\label{clone-existing-store}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ clone git@gh.com/Woile/keys.git my-company --sync gitcli}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{synchronization}{%
+\subsection{Synchronization}\label{synchronization}}
+
+\hypertarget{synchronize-with-remotes}{%
+\subsubsection{Synchronize with
+remotes}\label{synchronize-with-remotes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ sync}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{synchronzing-a-single-store}{%
+\subsubsection{Synchronzing a single
+store}\label{synchronzing-a-single-store}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ sync --store my-company}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{team-sharing}{%
+\subsection{Team sharing}\label{team-sharing}}
+
+\hypertarget{export-public-key}{%
+\subsubsection{Export public key}\label{export-public-key}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gpg}\NormalTok{ -a --export willy@email.com }\OperatorTok{>}\NormalTok{ willy.pub.asc}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{check-current-recipients}{%
+\subsubsection{Check current
+recipients}\label{check-current-recipients}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ recipients}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{add-public-key-into-gopass}{%
+\subsubsection{Add public key into
+gopass}\label{add-public-key-into-gopass}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gpg}\NormalTok{ --import }\OperatorTok{<}\NormalTok{ willy.pub.asc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gpg}\NormalTok{ --list-keys}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{gopass}\NormalTok{ recipients add willy@email.com}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://github.com/Woile/gopass-cheat-sheet}{source}
+\end{multicols}
+
+\end{document}

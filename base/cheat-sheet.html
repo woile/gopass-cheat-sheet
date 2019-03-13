@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+
+    $for(author-meta)$
+    <meta name="author" content="$author-meta$" />
+    $endfor$ $if(date-meta)$
+    <meta name="dcterms.date" content="$date-meta$" />
+    $endif$ $if(keywords)$
+    <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+    $endif$
+
+    <style type="text/css">
+      .cheat-sheet {
+        box-sizing: border-box;
+
+        -webkit-column-width: 36em;
+        -moz-column-width: 36em;
+        column-width: 36em;
+
+        -webkit-column-gap: 2em;
+        -moz-column-gap: 2em;
+        column-gap: 2em;
+        margin: 15px;
+        font-family: roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+      h1 {
+        padding-left: 20px;
+        background: $primarycolor$;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: white;
+        margin-top: 0px;
+      }
+
+      h2 {
+        background-color: $primarycolor$;
+        color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+      }
+      .source p {
+        margin: 0px;
+        padding: 0px;
+        position:fixed;
+      }
+      h3 {
+        /* text-decoration: underline; */
+        font-size: 1.3rem;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* .highlight pre, pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f6f8fa;
+        border-radius: 3px;
+    } */
+
+      code,
+      pre {
+        padding: 0 3px 2px;
+        font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+        font-size: 12px;
+        color: #333333;
+      }
+      code {
+        padding: 2px 4px;
+        color: #d14;
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+        white-space: nowrap;
+      }
+
+      pre {
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 20px;
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: pre;
+        white-space: pre-wrap;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+      }
+      pre.prettyprint {
+        margin-bottom: 20px;
+      }
+      pre code {
+        padding: 0;
+        color: inherit;
+        white-space: pre;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border: 0;
+      }
+      .pre-scrollable {
+        max-height: 340px;
+        overflow-y: scroll;
+      }
+    </style>
+
+    <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="cheat-sheet">
+        $body$
+      </div>
+    </div>
+  </body>
+</html>

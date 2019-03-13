@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+
+        <meta name="author" content="Santiago Fraire Willemoes" />
+          <meta name="keywords" content="gpg, crypto, password, secrets" />
+    
+    <style type="text/css">
+      .cheat-sheet {
+        box-sizing: border-box;
+
+        -webkit-column-width: 36em;
+        -moz-column-width: 36em;
+        column-width: 36em;
+
+        -webkit-column-gap: 2em;
+        -moz-column-gap: 2em;
+        column-gap: 2em;
+        margin: 15px;
+        font-family: roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+      h1 {
+        padding-left: 20px;
+        background: #222222;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: white;
+        margin-top: 0px;
+      }
+
+      h2 {
+        background-color: #222222;
+        color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+      }
+      .source p {
+        margin: 0px;
+        padding: 0px;
+        position:fixed;
+      }
+      h3 {
+        /* text-decoration: underline; */
+        font-size: 1.3rem;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* .highlight pre, pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f6f8fa;
+        border-radius: 3px;
+    } */
+
+      code,
+      pre {
+        padding: 0 3px 2px;
+        font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+        font-size: 12px;
+        color: #333333;
+      }
+      code {
+        padding: 2px 4px;
+        color: #d14;
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+        white-space: nowrap;
+      }
+
+      pre {
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 20px;
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: pre;
+        white-space: pre-wrap;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+      }
+      pre.prettyprint {
+        margin-bottom: 20px;
+      }
+      pre code {
+        padding: 0;
+        color: inherit;
+        white-space: pre;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border: 0;
+      }
+      .pre-scrollable {
+        max-height: 340px;
+        overflow-y: scroll;
+      }
+    </style>
+
+    <title>Gopass Cheat Sheet</title>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="cheat-sheet">
+        <h1 id="gopass-cheat-sheet">GOPASS CHEAT SHEET</h1>
+        <p>Keep passwords safe with <a href="https://gopass.pw">gopass</a>. It creates a folder tree, where encrypted files are the leaves.</p>
+        <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">gopass</span></a>
+        <a class="sourceLine" id="cb1-2" title="2">├── <span class="ex">my-company</span></a>
+        <a class="sourceLine" id="cb1-3" title="3">│   └── <span class="ex">pepe@my-company.com</span></a>
+        <a class="sourceLine" id="cb1-4" title="4">└── <span class="ex">personal</span></a>
+        <a class="sourceLine" id="cb1-5" title="5">    └── <span class="ex">pepe@personal.com</span></a></code></pre></div>
+        <h2 id="gpg-keys">GPG Keys</h2>
+        <h3 id="list-secret-keys">List secret keys</h3>
+        <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">gpg</span> -k</a></code></pre></div>
+        <h3 id="create-new-key">Create new key</h3>
+        <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">gpg</span> --full-generate-key</a></code></pre></div>
+        <h2 id="initialize-gopass">Initialize gopass</h2>
+        <h3 id="autocomplete">Autocomplete</h3>
+        <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">echo</span> <span class="st">&quot;source &lt;(gopass completion bash)&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</a></code></pre></div>
+        <h3 id="initialize-gopass-1">Initialize gopass</h3>
+        <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">gopass</span> init</a></code></pre></div>
+        <p>Note: backup your private key in an encrypted disk.</p>
+        <h2 id="using-gopass">Using gopass</h2>
+        <h3 id="list-passwords">List passwords</h3>
+        <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">gopass</span> ls</a></code></pre></div>
+        <h3 id="creating-passwords">Creating passwords</h3>
+        <!-- Default store location `~/.password-store/` -->
+        <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">gopass</span> insert my-company/willy@email.com</a></code></pre></div>
+        <h3 id="generate-random-pass">Generate random pass</h3>
+        <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">gopass</span> generate my-company/anothername@rmail.com</a></code></pre></div>
+        <h3 id="show-password-in-console">Show password in console</h3>
+        <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">gopass</span> my-company/willy@email.com</a></code></pre></div>
+        <h3 id="copy-password-to-clipboard">Copy password to clipboard</h3>
+        <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">gopass</span> -c my-company/willy@email.com</a></code></pre></div>
+        <h3 id="search-secrets">Search secrets</h3>
+        <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">gopass</span> search @email.com</a></code></pre></div>
+        <h2 id="using-stores">Using stores</h2>
+        <p>Stores (AKA mounts) let you group your passwords. Example: <code>personal</code>, <code>company</code>. Each one can live in a different repository, and you could share <code>company</code> with your peers.</p>
+        <h3 id="initialize-new-store">Initialize new store</h3>
+        <p>Creates a new store located at <code>~/.password-store-my-company</code>.</p>
+        <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">gopass</span> init --store my-company</a></code></pre></div>
+        <h3 id="add-git-remote-to-store">Add git remote to store</h3>
+        <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="ex">gopass</span> git remote add --store my-company origin git@gh.com/Woile/keys.git</a></code></pre></div>
+        <h3 id="clone-existing-store">Clone existing store</h3>
+        <div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="ex">gopass</span> clone git@gh.com/Woile/keys.git my-company --sync gitcli</a></code></pre></div>
+        <h2 id="synchronization">Synchronization</h2>
+        <h3 id="synchronize-with-remotes">Synchronize with remotes</h3>
+        <div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">gopass</span> sync</a></code></pre></div>
+        <h3 id="synchronzing-a-single-store">Synchronzing a single store</h3>
+        <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">gopass</span> sync --store my-company</a></code></pre></div>
+        <h2 id="team-sharing">Team sharing</h2>
+        <h3 id="export-public-key">Export public key</h3>
+        <div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">gpg</span> -a --export willy@email.com <span class="op">&gt;</span> willy.pub.asc</a></code></pre></div>
+        <h3 id="check-current-recipients">Check current recipients</h3>
+        <div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="ex">gopass</span> recipients</a></code></pre></div>
+        <h3 id="add-public-key-into-gopass">Add public key into gopass</h3>
+        <div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">gpg</span> --import <span class="op">&lt;</span> willy.pub.asc</a></code></pre></div>
+        <div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="ex">gpg</span> --list-keys</a></code></pre></div>
+        <div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="ex">gopass</span> recipients add willy@email.com</a></code></pre></div>
+        <div class="source">
+        <p><a href="https://github.com/Woile/gopass-cheat-sheet">source</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
