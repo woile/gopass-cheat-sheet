@@ -148,9 +148,10 @@ gopass recipients add willy@email.com
 ```
 
 <div class="source">
-[source][source] | [presentation][presentation]
+[source][source] | [presentation][presentation] | [santiwilly][santiwilly]
 </div>
 
 [gopass]: https://gopass.pw
 [source]: https://github.com/Woile/gopass-cheat-sheet
 [presentation]: https://woile.github.io/gopass-presentation/
+[santiwilly]: https://twitter.com/santiwilly
