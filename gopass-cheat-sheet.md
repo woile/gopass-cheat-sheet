@@ -71,13 +71,13 @@ gopass search @email.com
 ### Show password in console
 
 ```bash
-gopass my-company/willy@email.com
+gopass show my-company/willy@email.com
 ```
 
 ### Copy password to clipboard
 
 ```bash
-gopass -c my-company/willy@email.com
+gopass show -c my-company/willy@email.com
 ```
 
 ## Using stores
