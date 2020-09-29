@@ -15,7 +15,7 @@ gopass
 ### List secret keys
 
 ```bash
-gpg -k
+gpg -K
 ```
 
 ### Create new key (required)
