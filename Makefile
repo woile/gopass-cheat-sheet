@@ -1,4 +1,4 @@
-.PHONY: all clean default
+.PHONY: all clean default build-index
 
 default: all
 
@@ -13,10 +13,10 @@ OBJECTS_TEX = $(SOURCES_MD:.md=.tex)
 OBJECTS = \
 	$(OBJECTS_DOT_SVG) \
 	$(OBJECTS_HTML) \
-	$(OBJECTS_PDF) \
+	# $(OBJECTS_PDF) \
 	$(OBJECTS_TEX)
 
-all: $(OBJECTS)
+all: clean $(OBJECTS) build-index
 
 $(OBJECTS):
 
@@ -34,10 +34,11 @@ PANDOC_HTML_FLAGS = \
 	$(PANDOC_FLAGS) \
 	--template=base/cheat-sheet.html
 
+PDF_ENGINE = xelatex
 PANDOC_TEX_FLAGS = \
 	$(PANDOC_FLAGS) \
 	--template=base/cheat-sheet.tex \
-	--pdf-engine=xelatex
+	--pdf-engine=$(PDF_ENGINE)
 
 %.svg: %.dot
 	dot -Tsvg -o $@ $<
@@ -51,8 +52,8 @@ PANDOC_TEX_FLAGS = \
 %.tex: %.md %.yml base/cheat-sheet.tex
 	$(PANDOC) $(PANDOC_TEX_FLAGS) -o $@ $*.yml $<
 
-build-index:
+build-index: gopass-cheat-sheet.html
 	cp gopass-cheat-sheet.html index.html
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) index.html
